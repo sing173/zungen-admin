@@ -1,0 +1,1 @@
+dubboFilter=com.zungen.wb.framework.tenant.core.rpc.DubboFilter

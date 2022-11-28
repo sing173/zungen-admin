@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.apilog.config.ZungenApiLogAutoConfiguration,\
+  com.zungen.wb.framework.jackson.config.ZungenJacksonAutoConfiguration,\
+  com.zungen.wb.framework.swagger.config.ZungenSwaggerAutoConfiguration,\
+  com.zungen.wb.framework.web.config.ZungenWebAutoConfiguration

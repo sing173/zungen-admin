@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.security.config.ZungenSecurityAutoConfiguration,\
+  com.zungen.wb.framework.security.config.ZungenWebSecurityConfigurerAdapter

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.file.config.ZungenFileAutoConfiguration

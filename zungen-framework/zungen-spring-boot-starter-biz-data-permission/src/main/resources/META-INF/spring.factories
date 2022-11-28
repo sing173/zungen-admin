@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.datapermission.config.ZungenDataPermissionAutoConfiguration,\
+  com.zungen.wb.framework.datapermission.config.ZungenDeptDataPermissionAutoConfiguration

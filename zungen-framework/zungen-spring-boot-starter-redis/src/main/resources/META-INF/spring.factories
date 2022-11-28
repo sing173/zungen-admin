@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.redis.config.ZungenRedisAutoConfiguration,\
+  com.zungen.wb.framework.redis.config.ZungenCacheAutoConfiguration

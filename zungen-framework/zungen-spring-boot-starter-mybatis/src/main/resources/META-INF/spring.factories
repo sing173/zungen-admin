@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zungen.wb.framework.datasource.config.ZungenDataSourceAutoConfiguration,\
+  com.zungen.wb.framework.mybatis.config.ZungenMybatisAutoConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.zungen.wb.framework.mybatis.config.IdTypeEnvironmentPostProcessor
