@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.zungen.wb</groupId>
+    <artifactId>zungen-module-erp</artifactId>
+    <version>1.6.3-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>zungen-module-erp-biz</artifactId>
+  <name>zungen-module-erp-biz</name>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-module-erp-api</artifactId>
+      <version>1.6.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-module-system-api</artifactId>
+      <version>1.6.3-SNAPSHOT</version>
+    </dependency>
+
+    <!-- 业务组件 -->
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-biz-operatelog</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-biz-data-permission</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-biz-tenant</artifactId>
+    </dependency>
+
+    <!-- Web 相关 -->
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!-- DB 相关 -->
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-mybatis</artifactId>
+    </dependency>
+
+    <!-- Test 测试相关 -->
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-test</artifactId>
+    </dependency>
+
+  </dependencies>
+</project>

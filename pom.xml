@@ -17,7 +17,8 @@
         <module>zungen-module-bpm</module>
         <module>zungen-module-system</module>
         <module>zungen-module-infra</module>
-<!--        <module>zungen-module-pay</module>-->
+        <module>zungen-module-erp</module>
+        <!--        <module>zungen-module-pay</module>-->
 <!--        <module>zungen-module-mall</module>-->
 <!--        <module>zungen-module-visualization</module>-->
     </modules>

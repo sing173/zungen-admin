@@ -26,10 +26,10 @@ import static java.io.File.separator;
 @Slf4j
 public class ProjectReactor {
 
-    private static final String GROUP_ID = "com.zungen.wb";
+    private static final String GROUP_ID = "com.zungen.pda";
     private static final String ARTIFACT_ID = "zungen";
-    private static final String PACKAGE_NAME = "com.zungen.wb";
-    private static final String TITLE = "ZDE后台管理系统";
+    private static final String PACKAGE_NAME = "com.zungen.pda";
+    private static final String TITLE = "PDA后台管理系统";
 
     /**
      * 白名单文件，不进行重写，避免出问题
@@ -43,11 +43,11 @@ public class ProjectReactor {
         log.info("[main][原项目路劲改地址 ({})]", projectBaseDir);
 
         // ========== 配置，需要你手动修改 ==========
-        String groupIdNew = "com.zungen.wb";
+        String groupIdNew = "com.zungen.pda";
         String artifactIdNew = "zungen";
-        String packageNameNew = "com.zungen.wb";
-        String titleNew = "ZDE后台管理系统";
-        String projectBaseDirNew = projectBaseDir + "-pro"; // 一键改名后，“新”项目所在的目录
+        String packageNameNew = "com.zungen.pda";
+        String titleNew = "PDA后台管理系统";
+        String projectBaseDirNew = projectBaseDir + "-pda"; // 一键改名后，“新”项目所在的目录
         log.info("[main][检测新项目目录 ({})是否存在]", projectBaseDirNew);
         if (FileUtil.exist(projectBaseDirNew)) {
             log.info("[main][新项目目录检测 ({})已存在，请更改新的目录,程序退出]", projectBaseDirNew);
