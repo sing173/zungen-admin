@@ -62,6 +62,14 @@
             <artifactId>zungen-module-bpm-biz</artifactId>
             <version>1.6.3-SNAPSHOT</version>
         </dependency>
+
+        <!-- pda模块 -->
+        <dependency>
+            <groupId>com.zungen.wb</groupId>
+            <artifactId>zungen-module-erp-biz</artifactId>
+            <version>1.6.3-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-spring-boot-starter-biz-error-code</artifactId>

@@ -42,6 +42,6 @@ public class ErpAssetsBaseVO {
     private String sn;
 
     @ApiModelProperty(value = "使用部门")
-    private String useDept;
+    private Long useDept;
 
 }

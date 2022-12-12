@@ -51,6 +51,12 @@
       <artifactId>zungen-spring-boot-starter-security</artifactId>
     </dependency>
 
+    <!-- 工具 -->
+    <dependency>
+      <groupId>com.zungen.wb</groupId>
+      <artifactId>zungen-spring-boot-starter-excel</artifactId>
+    </dependency>
+
     <!-- DB 相关 -->
     <dependency>
       <groupId>com.zungen.wb</groupId>

@@ -1,6 +1,5 @@
-package com.zungen.wb.module.erp.service.erp_assets;
+package com.zungen.wb.module.erp.service.assets;
 
-import com.zungen.wb.module.erp.service.assets.ErpAssetsServiceImpl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
