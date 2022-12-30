@@ -14,6 +14,9 @@ import static com.zungen.wb.framework.common.util.date.DateUtils.FORMAT_YEAR_MON
 */
 @Data
 public class ErpAssetsBaseVO {
+    @ApiModelProperty(value = "对应各类资产表id", required = true)
+    @NotNull(message = "对应各类资产表id不能为空")
+    private String assetId;
 
     @ApiModelProperty(value = "资产名称", required = true)
     @NotNull(message = "资产名称不能为空")
@@ -23,16 +26,12 @@ public class ErpAssetsBaseVO {
     @NotNull(message = "资产编号不能为空")
     private String code;
 
-    @ApiModelProperty(value = "资产分类", required = true)
-    @NotNull(message = "资产分类不能为空")
-    private Integer type;
-
     @ApiModelProperty(value = "状态", required = true)
     @NotNull(message = "状态不能为空")
     private Integer status;
 
     @ApiModelProperty(value = "关联资产")
-    private Long parent;
+    private String parent;
 
     @ApiModelProperty(value = "入库时间")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)

@@ -38,7 +38,7 @@ public class ErpAssetsPadController {
     @PostMapping("/create")
     @ApiOperation("创建资产-平板")
     @PreAuthorize("@ss.hasPermission('erp:assets-pad:create')")
-    public CommonResult<Long> createAssetsPad(@Valid @RequestBody ErpAssetsPadCreateReqVO createReqVO) {
+    public CommonResult<String> createAssetsPad(@Valid @RequestBody ErpAssetsPadCreateReqVO createReqVO) {
         return success(assetsPadService.createAssetsPad(createReqVO));
     }
 
@@ -52,18 +52,18 @@ public class ErpAssetsPadController {
 
     @DeleteMapping("/delete")
     @ApiOperation("删除资产-平板")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-pad:delete')")
-    public CommonResult<Boolean> deleteAssetsPad(@RequestParam("id") Long id) {
+    public CommonResult<Boolean> deleteAssetsPad(@RequestParam("id") String id) {
         assetsPadService.deleteAssetsPad(id);
         return success(true);
     }
 
     @GetMapping("/get")
     @ApiOperation("获得资产-平板")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-pad:query')")
-    public CommonResult<ErpAssetsPadRespVO> getAssetsPad(@RequestParam("id") Long id) {
+    public CommonResult<ErpAssetsPadRespVO> getAssetsPad(@RequestParam("id") String id) {
         ErpAssetsPadDO assetsPad = assetsPadService.getAssetsPad(id);
         return success(ErpAssetsPadConvert.INSTANCE.convert(assetsPad));
     }
@@ -72,7 +72,7 @@ public class ErpAssetsPadController {
     @ApiOperation("获得资产-平板列表")
     @ApiImplicitParam(name = "ids", value = "编号列表", required = true, example = "1024,2048", dataTypeClass = List.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-pad:query')")
-    public CommonResult<List<ErpAssetsPadRespVO>> getAssetsPadList(@RequestParam("ids") Collection<Long> ids) {
+    public CommonResult<List<ErpAssetsPadRespVO>> getAssetsPadList(@RequestParam("ids") Collection<String> ids) {
         List<ErpAssetsPadDO> list = assetsPadService.getAssetsPadList(ids);
         return success(ErpAssetsPadConvert.INSTANCE.convertList(list));
     }

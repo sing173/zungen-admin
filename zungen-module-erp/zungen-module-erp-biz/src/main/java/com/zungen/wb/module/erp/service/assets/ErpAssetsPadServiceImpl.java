@@ -1,5 +1,8 @@
 package com.zungen.wb.module.erp.service.assets;
 
+import com.zungen.wb.module.erp.convert.assets.ErpAssetsConvert;
+import com.zungen.wb.module.erp.enums.DictTypeConstants;
+import com.zungen.wb.module.erp.enums.assets.AssetsTypeEnum;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
@@ -27,11 +30,20 @@ public class ErpAssetsPadServiceImpl implements ErpAssetsPadService {
     @Resource
     private ErpAssetsPadMapper assetsPadMapper;
 
+    @Resource
+    private ErpAssetsService assetsService;
+
     @Override
-    public Long createAssetsPad(ErpAssetsPadCreateReqVO createReqVO) {
+    public String createAssetsPad(ErpAssetsPadCreateReqVO createReqVO) {
         // 插入
         ErpAssetsPadDO assetsPad = ErpAssetsPadConvert.INSTANCE.convert(createReqVO);
         assetsPadMapper.insert(assetsPad);
+        //插入资产汇总表
+        ErpAssetsCreateReqVO assetsCreateReqVO = ErpAssetsConvert.INSTANCE.convertByPad(assetsPad);
+        assetsCreateReqVO.setType(AssetsTypeEnum.PAD.getType());
+        assetsCreateReqVO.setCheckInTime(new Date());
+        assetsService.createAssets(assetsCreateReqVO);
+
         // 返回
         return assetsPad.getId();
     }
@@ -43,29 +55,33 @@ public class ErpAssetsPadServiceImpl implements ErpAssetsPadService {
         // 更新
         ErpAssetsPadDO updateObj = ErpAssetsPadConvert.INSTANCE.convert(updateReqVO);
         assetsPadMapper.updateById(updateObj);
+        //更新资产汇总表
+        assetsService.updateByAssetId(ErpAssetsConvert.INSTANCE.convertByPad2(updateObj));
     }
 
     @Override
-    public void deleteAssetsPad(Long id) {
+    public void deleteAssetsPad(String id) {
         // 校验存在
         this.validateAssetsPadExists(id);
         // 删除
         assetsPadMapper.deleteById(id);
+        // 删除资产汇总表记录
+        assetsService.deleteAssetsByAssetId(id);
     }
 
-    private void validateAssetsPadExists(Long id) {
+    private void validateAssetsPadExists(String id) {
         if (assetsPadMapper.selectById(id) == null) {
             throw exception(ASSETS_PAD_NOT_EXISTS);
         }
     }
 
     @Override
-    public ErpAssetsPadDO getAssetsPad(Long id) {
+    public ErpAssetsPadDO getAssetsPad(String id) {
         return assetsPadMapper.selectById(id);
     }
 
     @Override
-    public List<ErpAssetsPadDO> getAssetsPadList(Collection<Long> ids) {
+    public List<ErpAssetsPadDO> getAssetsPadList(Collection<String> ids) {
         return assetsPadMapper.selectBatchIds(ids);
     }
 

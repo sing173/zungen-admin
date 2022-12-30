@@ -38,7 +38,7 @@ public class ErpAssetsSimController {
     @PostMapping("/create")
     @ApiOperation("创建资产-sim卡")
     @PreAuthorize("@ss.hasPermission('erp:assets-sim:create')")
-    public CommonResult<Long> createAssetsSim(@Valid @RequestBody ErpAssetsSimCreateReqVO createReqVO) {
+    public CommonResult<String> createAssetsSim(@Valid @RequestBody ErpAssetsSimCreateReqVO createReqVO) {
         return success(assetsSimService.createAssetsSim(createReqVO));
     }
 
@@ -52,18 +52,18 @@ public class ErpAssetsSimController {
 
     @DeleteMapping("/delete")
     @ApiOperation("删除资产-sim卡")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-sim:delete')")
-    public CommonResult<Boolean> deleteAssetsSim(@RequestParam("id") Long id) {
+    public CommonResult<Boolean> deleteAssetsSim(@RequestParam("id") String id) {
         assetsSimService.deleteAssetsSim(id);
         return success(true);
     }
 
     @GetMapping("/get")
     @ApiOperation("获得资产-sim卡")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-sim:query')")
-    public CommonResult<ErpAssetsSimRespVO> getAssetsSim(@RequestParam("id") Long id) {
+    public CommonResult<ErpAssetsSimRespVO> getAssetsSim(@RequestParam("id") String id) {
         ErpAssetsSimDO assetsSim = assetsSimService.getAssetsSim(id);
         return success(ErpAssetsSimConvert.INSTANCE.convert(assetsSim));
     }
@@ -72,7 +72,7 @@ public class ErpAssetsSimController {
     @ApiOperation("获得资产-sim卡列表")
     @ApiImplicitParam(name = "ids", value = "编号列表", required = true, example = "1024,2048", dataTypeClass = List.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-sim:query')")
-    public CommonResult<List<ErpAssetsSimRespVO>> getAssetsSimList(@RequestParam("ids") Collection<Long> ids) {
+    public CommonResult<List<ErpAssetsSimRespVO>> getAssetsSimList(@RequestParam("ids") Collection<String> ids) {
         List<ErpAssetsSimDO> list = assetsSimService.getAssetsSimList(ids);
         return success(ErpAssetsSimConvert.INSTANCE.convertList(list));
     }

@@ -19,7 +19,7 @@ public interface ErpAssetsBackService {
      * @param createReqVO 创建信息
      * @return 编号
      */
-    Long createAssetsBack(@Valid ErpAssetsBackCreateReqVO createReqVO);
+    String createAssetsBack(@Valid ErpAssetsBackCreateReqVO createReqVO);
 
     /**
      * 更新资产-背夹
@@ -33,7 +33,7 @@ public interface ErpAssetsBackService {
      *
      * @param id 编号
      */
-    void deleteAssetsBack(Long id);
+    void deleteAssetsBack(String id);
 
     /**
      * 获得资产-背夹
@@ -41,7 +41,7 @@ public interface ErpAssetsBackService {
      * @param id 编号
      * @return 资产-背夹
      */
-    ErpAssetsBackDO getAssetsBack(Long id);
+    ErpAssetsBackDO getAssetsBack(String id);
 
     /**
      * 获得资产-背夹列表
@@ -49,7 +49,7 @@ public interface ErpAssetsBackService {
      * @param ids 编号
      * @return 资产-背夹列表
      */
-    List<ErpAssetsBackDO> getAssetsBackList(Collection<Long> ids);
+    List<ErpAssetsBackDO> getAssetsBackList(Collection<String> ids);
 
     /**
      * 获得资产-背夹分页

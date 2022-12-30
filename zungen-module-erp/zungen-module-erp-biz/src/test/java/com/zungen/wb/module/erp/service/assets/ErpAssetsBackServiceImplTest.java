@@ -46,7 +46,7 @@ public class ErpAssetsBackServiceImplTest extends BaseDbUnitTest {
         ErpAssetsBackCreateReqVO reqVO = randomPojo(ErpAssetsBackCreateReqVO.class);
 
         // 调用
-        Long assetsBackId = assetsBackService.createAssetsBack(reqVO);
+        String assetsBackId = assetsBackService.createAssetsBack(reqVO);
         // 断言
         assertNotNull(assetsBackId);
         // 校验记录的属性是否正确
@@ -86,7 +86,7 @@ public class ErpAssetsBackServiceImplTest extends BaseDbUnitTest {
         ErpAssetsBackDO dbAssetsBack = randomPojo(ErpAssetsBackDO.class);
         assetsBackMapper.insert(dbAssetsBack);// @Sql: 先插入出一条存在的数据
         // 准备参数
-        Long id = dbAssetsBack.getId();
+        String id = dbAssetsBack.getId();
 
         // 调用
         assetsBackService.deleteAssetsBack(id);
@@ -97,7 +97,7 @@ public class ErpAssetsBackServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testDeleteAssetsBack_notExists() {
         // 准备参数
-        Long id = randomLongId();
+        String id = randomString();
 
         // 调用, 并断言异常
         assertServiceException(() -> assetsBackService.deleteAssetsBack(id), ASSETS_BACK_NOT_EXISTS);

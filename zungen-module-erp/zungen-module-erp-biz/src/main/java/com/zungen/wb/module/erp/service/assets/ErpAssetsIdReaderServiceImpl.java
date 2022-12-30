@@ -1,5 +1,7 @@
 package com.zungen.wb.module.erp.service.assets;
 
+import com.zungen.wb.module.erp.convert.assets.ErpAssetsConvert;
+import com.zungen.wb.module.erp.enums.assets.AssetsTypeEnum;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
@@ -27,11 +29,20 @@ public class ErpAssetsIdReaderServiceImpl implements ErpAssetsIdReaderService {
     @Resource
     private ErpAssetsIdReaderMapper assetsIdReaderMapper;
 
+    @Resource
+    private ErpAssetsService assetsService;
+
     @Override
-    public Long createAssetsIdReader(ErpAssetsIdReaderCreateReqVO createReqVO) {
+    public String createAssetsIdReader(ErpAssetsIdReaderCreateReqVO createReqVO) {
         // 插入
         ErpAssetsIdReaderDO assetsIdReader = ErpAssetsIdReaderConvert.INSTANCE.convert(createReqVO);
         assetsIdReaderMapper.insert(assetsIdReader);
+        //插入资产汇总表
+        ErpAssetsCreateReqVO assetsCreateReqVO = ErpAssetsConvert.INSTANCE.convertByReader(assetsIdReader);
+        assetsCreateReqVO.setType(AssetsTypeEnum.READER.getType());
+        assetsCreateReqVO.setCheckInTime(new Date());
+        assetsService.createAssets(assetsCreateReqVO);
+
         // 返回
         return assetsIdReader.getId();
     }
@@ -43,29 +54,33 @@ public class ErpAssetsIdReaderServiceImpl implements ErpAssetsIdReaderService {
         // 更新
         ErpAssetsIdReaderDO updateObj = ErpAssetsIdReaderConvert.INSTANCE.convert(updateReqVO);
         assetsIdReaderMapper.updateById(updateObj);
+        //更新资产汇总表
+        assetsService.updateByAssetId(ErpAssetsConvert.INSTANCE.convertByReader2(updateObj));
     }
 
     @Override
-    public void deleteAssetsIdReader(Long id) {
+    public void deleteAssetsIdReader(String id) {
         // 校验存在
         this.validateAssetsIdReaderExists(id);
         // 删除
         assetsIdReaderMapper.deleteById(id);
+        // 删除资产汇总表记录
+        assetsService.deleteAssetsByAssetId(id);
     }
 
-    private void validateAssetsIdReaderExists(Long id) {
+    private void validateAssetsIdReaderExists(String id) {
         if (assetsIdReaderMapper.selectById(id) == null) {
             throw exception(ASSETS_ID_READER_NOT_EXISTS);
         }
     }
 
     @Override
-    public ErpAssetsIdReaderDO getAssetsIdReader(Long id) {
+    public ErpAssetsIdReaderDO getAssetsIdReader(String id) {
         return assetsIdReaderMapper.selectById(id);
     }
 
     @Override
-    public List<ErpAssetsIdReaderDO> getAssetsIdReaderList(Collection<Long> ids) {
+    public List<ErpAssetsIdReaderDO> getAssetsIdReaderList(Collection<String> ids) {
         return assetsIdReaderMapper.selectBatchIds(ids);
     }
 

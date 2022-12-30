@@ -23,8 +23,8 @@ public class ErpAssetsBackDO extends BaseDO {
     /**
      * 唯一标识
      */
-    @TableId
-    private Long id;
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String id;
     /**
      * 平板id
      */

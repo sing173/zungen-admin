@@ -28,7 +28,7 @@ public class ErpAssetsDO extends BaseDO {
     /**
      * 对应各类资产表id
      */
-    private Long assertId;
+    private String assetId;
     /**
      * 资产名称
      */
@@ -48,7 +48,7 @@ public class ErpAssetsDO extends BaseDO {
     /**
      * 关联资产
      */
-    private Long parent;
+    private String parent;
     /**
      * 入库时间
      */

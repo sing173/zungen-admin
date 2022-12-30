@@ -11,7 +11,7 @@ import io.swagger.annotations.*;
 public class ErpAssetsPadRespVO extends ErpAssetsPadBaseVO {
 
     @ApiModelProperty(value = "唯一标识", required = true)
-    private Long id;
+    private String id;
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;

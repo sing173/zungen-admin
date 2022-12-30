@@ -13,6 +13,6 @@ public class ErpAssetsIdReaderUpdateReqVO extends ErpAssetsIdReaderBaseVO {
 
     @ApiModelProperty(value = "唯一标识", required = true)
     @NotNull(message = "唯一标识不能为空")
-    private Long id;
+    private String id;
 
 }

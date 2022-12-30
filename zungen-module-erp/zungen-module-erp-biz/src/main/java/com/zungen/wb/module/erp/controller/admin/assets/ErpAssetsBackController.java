@@ -38,7 +38,7 @@ public class ErpAssetsBackController {
     @PostMapping("/create")
     @ApiOperation("创建资产-背夹")
     @PreAuthorize("@ss.hasPermission('erp:assets-back:create')")
-    public CommonResult<Long> createAssetsBack(@Valid @RequestBody ErpAssetsBackCreateReqVO createReqVO) {
+    public CommonResult<String> createAssetsBack(@Valid @RequestBody ErpAssetsBackCreateReqVO createReqVO) {
         return success(assetsBackService.createAssetsBack(createReqVO));
     }
 
@@ -52,18 +52,18 @@ public class ErpAssetsBackController {
 
     @DeleteMapping("/delete")
     @ApiOperation("删除资产-背夹")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-back:delete')")
-    public CommonResult<Boolean> deleteAssetsBack(@RequestParam("id") Long id) {
+    public CommonResult<Boolean> deleteAssetsBack(@RequestParam("id") String id) {
         assetsBackService.deleteAssetsBack(id);
         return success(true);
     }
 
     @GetMapping("/get")
     @ApiOperation("获得资产-背夹")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
+    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-back:query')")
-    public CommonResult<ErpAssetsBackRespVO> getAssetsBack(@RequestParam("id") Long id) {
+    public CommonResult<ErpAssetsBackRespVO> getAssetsBack(@RequestParam("id") String id) {
         ErpAssetsBackDO assetsBack = assetsBackService.getAssetsBack(id);
         return success(ErpAssetsBackConvert.INSTANCE.convert(assetsBack));
     }
@@ -72,7 +72,7 @@ public class ErpAssetsBackController {
     @ApiOperation("获得资产-背夹列表")
     @ApiImplicitParam(name = "ids", value = "编号列表", required = true, example = "1024,2048", dataTypeClass = List.class)
     @PreAuthorize("@ss.hasPermission('erp:assets-back:query')")
-    public CommonResult<List<ErpAssetsBackRespVO>> getAssetsBackList(@RequestParam("ids") Collection<Long> ids) {
+    public CommonResult<List<ErpAssetsBackRespVO>> getAssetsBackList(@RequestParam("ids") Collection<String> ids) {
         List<ErpAssetsBackDO> list = assetsBackService.getAssetsBackList(ids);
         return success(ErpAssetsBackConvert.INSTANCE.convertList(list));
     }

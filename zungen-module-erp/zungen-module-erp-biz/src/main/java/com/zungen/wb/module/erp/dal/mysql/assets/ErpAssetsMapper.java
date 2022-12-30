@@ -1,5 +1,7 @@
 package com.zungen.wb.module.erp.dal.mysql.assets;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
 import com.zungen.wb.framework.mybatis.core.mapper.BaseMapperX;
@@ -22,6 +24,19 @@ public interface ErpAssetsMapper extends BaseMapperX<ErpAssetsDO> {
                 .eqIfPresent(ErpAssetsDO::getStatus, reqVO.getStatus())
                 .betweenIfPresent(ErpAssetsDO::getCheckInTime, reqVO.getCheckInTime())
                 .orderByDesc(ErpAssetsDO::getId));
+    }
+
+    default ErpAssetsDO selectByAssetId(String assetId){
+        return selectOne(new QueryWrapper<ErpAssetsDO>().eq("asset_id", assetId));
+    }
+
+    default void updateByAssetId(ErpAssetsDO erpAssetsDO, String assetId) {
+        update(erpAssetsDO, new QueryWrapper<ErpAssetsDO>().eq("asset_id", assetId));
+
+    }
+
+    default void deleteByAssetId(String assetId){
+        delete(Wrappers.lambdaUpdate(ErpAssetsDO.class).eq(ErpAssetsDO::getAssetId, assetId));
     }
 
 }

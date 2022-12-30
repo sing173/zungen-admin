@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 public class ErpAssetsIdReaderBaseVO {
 
     @ApiModelProperty(value = "平板id")
-    private Long padId;
+    private String padId;
 
     @ApiModelProperty(value = "身份证读取仪名称", required = true)
     @NotNull(message = "身份证读取仪名称不能为空")

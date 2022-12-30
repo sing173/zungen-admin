@@ -46,7 +46,7 @@ public class ErpAssetsPadServiceImplTest extends BaseDbUnitTest {
         ErpAssetsPadCreateReqVO reqVO = randomPojo(ErpAssetsPadCreateReqVO.class);
 
         // 调用
-        Long assetsPadId = assetsPadService.createAssetsPad(reqVO);
+        String assetsPadId = assetsPadService.createAssetsPad(reqVO);
         // 断言
         assertNotNull(assetsPadId);
         // 校验记录的属性是否正确
@@ -86,7 +86,7 @@ public class ErpAssetsPadServiceImplTest extends BaseDbUnitTest {
         ErpAssetsPadDO dbAssetsPad = randomPojo(ErpAssetsPadDO.class);
         assetsPadMapper.insert(dbAssetsPad);// @Sql: 先插入出一条存在的数据
         // 准备参数
-        Long id = dbAssetsPad.getId();
+        String id = dbAssetsPad.getId();
 
         // 调用
         assetsPadService.deleteAssetsPad(id);
@@ -97,7 +97,7 @@ public class ErpAssetsPadServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testDeleteAssetsPad_notExists() {
         // 准备参数
-        Long id = randomLongId();
+        String id = randomString();
 
         // 调用, 并断言异常
         assertServiceException(() -> assetsPadService.deleteAssetsPad(id), ASSETS_PAD_NOT_EXISTS);

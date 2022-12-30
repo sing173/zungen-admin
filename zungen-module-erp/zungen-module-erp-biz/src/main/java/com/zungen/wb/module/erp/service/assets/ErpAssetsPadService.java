@@ -19,7 +19,7 @@ public interface ErpAssetsPadService {
      * @param createReqVO 创建信息
      * @return 编号
      */
-    Long createAssetsPad(@Valid ErpAssetsPadCreateReqVO createReqVO);
+    String createAssetsPad(@Valid ErpAssetsPadCreateReqVO createReqVO);
 
     /**
      * 更新资产-平板
@@ -33,7 +33,7 @@ public interface ErpAssetsPadService {
      *
      * @param id 编号
      */
-    void deleteAssetsPad(Long id);
+    void deleteAssetsPad(String id);
 
     /**
      * 获得资产-平板
@@ -41,7 +41,7 @@ public interface ErpAssetsPadService {
      * @param id 编号
      * @return 资产-平板
      */
-    ErpAssetsPadDO getAssetsPad(Long id);
+    ErpAssetsPadDO getAssetsPad(String id);
 
     /**
      * 获得资产-平板列表
@@ -49,7 +49,7 @@ public interface ErpAssetsPadService {
      * @param ids 编号
      * @return 资产-平板列表
      */
-    List<ErpAssetsPadDO> getAssetsPadList(Collection<Long> ids);
+    List<ErpAssetsPadDO> getAssetsPadList(Collection<String> ids);
 
     /**
      * 获得资产-平板分页

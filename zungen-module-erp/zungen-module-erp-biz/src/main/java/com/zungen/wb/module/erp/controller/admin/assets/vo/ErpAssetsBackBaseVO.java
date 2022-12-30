@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 public class ErpAssetsBackBaseVO {
 
     @ApiModelProperty(value = "平板id")
-    private Long padId;
+    private String padId;
 
     @ApiModelProperty(value = "背夹名称", required = true)
     @NotNull(message = "背夹名称不能为空")

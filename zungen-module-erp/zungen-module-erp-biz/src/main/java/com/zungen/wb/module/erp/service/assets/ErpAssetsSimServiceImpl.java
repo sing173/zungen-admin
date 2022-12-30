@@ -1,5 +1,7 @@
 package com.zungen.wb.module.erp.service.assets;
 
+import com.zungen.wb.module.erp.convert.assets.ErpAssetsConvert;
+import com.zungen.wb.module.erp.enums.assets.AssetsTypeEnum;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
@@ -27,11 +29,19 @@ public class ErpAssetsSimServiceImpl implements ErpAssetsSimService {
     @Resource
     private ErpAssetsSimMapper assetsSimMapper;
 
+    @Resource
+    private ErpAssetsService assetsService;
+
     @Override
-    public Long createAssetsSim(ErpAssetsSimCreateReqVO createReqVO) {
+    public String createAssetsSim(ErpAssetsSimCreateReqVO createReqVO) {
         // 插入
         ErpAssetsSimDO assetsSim = ErpAssetsSimConvert.INSTANCE.convert(createReqVO);
         assetsSimMapper.insert(assetsSim);
+        //插入资产汇总表
+        ErpAssetsCreateReqVO assetsCreateReqVO = ErpAssetsConvert.INSTANCE.convertBySim(assetsSim);
+        assetsCreateReqVO.setType(AssetsTypeEnum.SIM.getType());
+        assetsCreateReqVO.setCheckInTime(new Date());
+        assetsService.createAssets(assetsCreateReqVO);
         // 返回
         return assetsSim.getId();
     }
@@ -43,29 +53,33 @@ public class ErpAssetsSimServiceImpl implements ErpAssetsSimService {
         // 更新
         ErpAssetsSimDO updateObj = ErpAssetsSimConvert.INSTANCE.convert(updateReqVO);
         assetsSimMapper.updateById(updateObj);
+        //更新资产汇总表
+        assetsService.updateByAssetId(ErpAssetsConvert.INSTANCE.convertBySim2(updateObj));
     }
 
     @Override
-    public void deleteAssetsSim(Long id) {
+    public void deleteAssetsSim(String id) {
         // 校验存在
         this.validateAssetsSimExists(id);
         // 删除
         assetsSimMapper.deleteById(id);
+        // 删除资产汇总表记录
+        assetsService.deleteAssetsByAssetId(id);
     }
 
-    private void validateAssetsSimExists(Long id) {
+    private void validateAssetsSimExists(String id) {
         if (assetsSimMapper.selectById(id) == null) {
             throw exception(ASSETS_SIM_NOT_EXISTS);
         }
     }
 
     @Override
-    public ErpAssetsSimDO getAssetsSim(Long id) {
+    public ErpAssetsSimDO getAssetsSim(String id) {
         return assetsSimMapper.selectById(id);
     }
 
     @Override
-    public List<ErpAssetsSimDO> getAssetsSimList(Collection<Long> ids) {
+    public List<ErpAssetsSimDO> getAssetsSimList(Collection<String> ids) {
         return assetsSimMapper.selectBatchIds(ids);
     }
 

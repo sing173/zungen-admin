@@ -15,10 +15,10 @@ import com.alibaba.excel.annotation.ExcelProperty;
 public class ErpAssetsBackExcelVO {
 
     @ExcelProperty("唯一标识")
-    private Long id;
+    private String id;
 
     @ExcelProperty("平板id")
-    private Long padId;
+    private String padId;
 
     @ExcelProperty("背夹名称")
     private String name;

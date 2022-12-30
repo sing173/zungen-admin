@@ -11,12 +11,7 @@ import javax.validation.constraints.*;
 public class ErpAssetsUpdateReqVO extends ErpAssetsBaseVO {
 
     @ApiModelProperty(value = "唯一标识", required = true)
-    @NotNull(message = "唯一标识不能为空")
     private Long id;
-
-    @ApiModelProperty(value = "对应各类资产表id", required = true)
-    @NotNull(message = "对应各类资产表id不能为空")
-    private Long assertId;
 
     @ApiModelProperty(value = "备注")
     private String remark;

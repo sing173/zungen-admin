@@ -15,7 +15,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 public class ErpAssetsPadExcelVO {
 
     @ExcelProperty("唯一标识")
-    private Long id;
+    private String id;
 
     @ExcelProperty("平板名称")
     private String name;

@@ -21,7 +21,7 @@ public class ErpAssetsSimPageReqVO extends PageParam {
     private String code;
 
     @ApiModelProperty(value = "平板id")
-    private Long padId;
+    private String padId;
 
     @ApiModelProperty(value = "sim卡iccid号")
     private String iccid;

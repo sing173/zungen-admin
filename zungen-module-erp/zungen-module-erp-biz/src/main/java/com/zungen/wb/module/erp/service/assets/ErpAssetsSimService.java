@@ -19,7 +19,7 @@ public interface ErpAssetsSimService {
      * @param createReqVO 创建信息
      * @return 编号
      */
-    Long createAssetsSim(@Valid ErpAssetsSimCreateReqVO createReqVO);
+    String createAssetsSim(@Valid ErpAssetsSimCreateReqVO createReqVO);
 
     /**
      * 更新资产-sim卡
@@ -33,7 +33,7 @@ public interface ErpAssetsSimService {
      *
      * @param id 编号
      */
-    void deleteAssetsSim(Long id);
+    void deleteAssetsSim(String id);
 
     /**
      * 获得资产-sim卡
@@ -41,7 +41,7 @@ public interface ErpAssetsSimService {
      * @param id 编号
      * @return 资产-sim卡
      */
-    ErpAssetsSimDO getAssetsSim(Long id);
+    ErpAssetsSimDO getAssetsSim(String id);
 
     /**
      * 获得资产-sim卡列表
@@ -49,7 +49,7 @@ public interface ErpAssetsSimService {
      * @param ids 编号
      * @return 资产-sim卡列表
      */
-    List<ErpAssetsSimDO> getAssetsSimList(Collection<Long> ids);
+    List<ErpAssetsSimDO> getAssetsSimList(Collection<String> ids);
 
     /**
      * 获得资产-sim卡分页

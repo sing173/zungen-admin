@@ -15,7 +15,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 public class ErpAssetsSimExcelVO {
 
     @ExcelProperty("唯一标识")
-    private Long id;
+    private String id;
 
     @ExcelProperty("sim名称")
     private String name;
@@ -24,7 +24,7 @@ public class ErpAssetsSimExcelVO {
     private String code;
 
     @ExcelProperty("平板id")
-    private Long padId;
+    private String padId;
 
     @ExcelProperty("sim卡iccid号")
     private String iccid;

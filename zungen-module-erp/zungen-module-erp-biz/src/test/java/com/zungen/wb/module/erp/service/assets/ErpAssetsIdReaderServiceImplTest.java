@@ -46,7 +46,7 @@ public class ErpAssetsIdReaderServiceImplTest extends BaseDbUnitTest {
         ErpAssetsIdReaderCreateReqVO reqVO = randomPojo(ErpAssetsIdReaderCreateReqVO.class);
 
         // 调用
-        Long assetsIdReaderId = assetsIdReaderService.createAssetsIdReader(reqVO);
+        String assetsIdReaderId = assetsIdReaderService.createAssetsIdReader(reqVO);
         // 断言
         assertNotNull(assetsIdReaderId);
         // 校验记录的属性是否正确
@@ -86,7 +86,7 @@ public class ErpAssetsIdReaderServiceImplTest extends BaseDbUnitTest {
         ErpAssetsIdReaderDO dbAssetsIdReader = randomPojo(ErpAssetsIdReaderDO.class);
         assetsIdReaderMapper.insert(dbAssetsIdReader);// @Sql: 先插入出一条存在的数据
         // 准备参数
-        Long id = dbAssetsIdReader.getId();
+        String id = dbAssetsIdReader.getId();
 
         // 调用
         assetsIdReaderService.deleteAssetsIdReader(id);
@@ -97,7 +97,7 @@ public class ErpAssetsIdReaderServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testDeleteAssetsIdReader_notExists() {
         // 准备参数
-        Long id = randomLongId();
+        String id = randomString();
 
         // 调用, 并断言异常
         assertServiceException(() -> assetsIdReaderService.deleteAssetsIdReader(id), ASSETS_ID_READER_NOT_EXISTS);

@@ -19,7 +19,7 @@ public interface ErpAssetsIdReaderService {
      * @param createReqVO 创建信息
      * @return 编号
      */
-    Long createAssetsIdReader(@Valid ErpAssetsIdReaderCreateReqVO createReqVO);
+    String createAssetsIdReader(@Valid ErpAssetsIdReaderCreateReqVO createReqVO);
 
     /**
      * 更新资产-身份证读取仪
@@ -33,7 +33,7 @@ public interface ErpAssetsIdReaderService {
      *
      * @param id 编号
      */
-    void deleteAssetsIdReader(Long id);
+    void deleteAssetsIdReader(String id);
 
     /**
      * 获得资产-身份证读取仪
@@ -41,7 +41,7 @@ public interface ErpAssetsIdReaderService {
      * @param id 编号
      * @return 资产-身份证读取仪
      */
-    ErpAssetsIdReaderDO getAssetsIdReader(Long id);
+    ErpAssetsIdReaderDO getAssetsIdReader(String id);
 
     /**
      * 获得资产-身份证读取仪列表
@@ -49,7 +49,7 @@ public interface ErpAssetsIdReaderService {
      * @param ids 编号
      * @return 资产-身份证读取仪列表
      */
-    List<ErpAssetsIdReaderDO> getAssetsIdReaderList(Collection<Long> ids);
+    List<ErpAssetsIdReaderDO> getAssetsIdReaderList(Collection<String> ids);
 
     /**
      * 获得资产-身份证读取仪分页

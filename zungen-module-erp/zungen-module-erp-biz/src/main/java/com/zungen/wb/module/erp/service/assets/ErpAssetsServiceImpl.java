@@ -2,6 +2,8 @@ package com.zungen.wb.module.erp.service.assets;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import javax.validation.Valid;
+
 import org.springframework.validation.annotation.Validated;
 
 import java.util.*;
@@ -46,11 +48,37 @@ public class ErpAssetsServiceImpl implements ErpAssetsService {
     }
 
     @Override
+    public void updateByAssetId(@Valid ErpAssetsUpdateReqVO updateReqVO){
+        // 校验存在
+        ErpAssetsDO updateObj = assetsMapper.selectByAssetId(updateReqVO.getAssetId());
+        if (updateObj == null) {
+            throw exception(ASSETS_NOT_EXISTS);
+        }
+        // 更新
+        updateObj.setStatus(updateReqVO.getStatus());
+        updateObj.setCode(updateReqVO.getCode());
+        updateObj.setName(updateReqVO.getName());
+        updateObj.setRemark(updateReqVO.getRemark());
+        updateObj.setSn(updateReqVO.getSn());
+        updateObj.setUseDept(updateReqVO.getUseDept());
+
+        assetsMapper.updateByAssetId(updateObj, updateReqVO.getAssetId());
+    }
+
+    @Override
     public void deleteAssets(Long id) {
         // 校验存在
         this.validateAssetsExists(id);
         // 删除
         assetsMapper.deleteById(id);
+    }
+
+    @Override
+    public void deleteAssetsByAssetId(String assetId) {
+        if (assetsMapper.selectByAssetId(assetId) != null) {
+            assetsMapper.deleteByAssetId(assetId);
+        }
+
     }
 
     private void validateAssetsExists(Long id) {

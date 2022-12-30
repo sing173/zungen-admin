@@ -13,7 +13,7 @@ import static com.zungen.wb.framework.common.util.date.DateUtils.FORMAT_YEAR_MON
 public class ErpAssetsIdReaderExportReqVO {
 
     @ApiModelProperty(value = "平板id")
-    private Long padId;
+    private String padId;
 
     @ApiModelProperty(value = "身份证读取仪名称")
     private String name;

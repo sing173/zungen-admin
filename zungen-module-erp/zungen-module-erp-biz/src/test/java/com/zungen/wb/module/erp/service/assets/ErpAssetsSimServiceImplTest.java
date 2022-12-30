@@ -46,7 +46,7 @@ public class ErpAssetsSimServiceImplTest extends BaseDbUnitTest {
         ErpAssetsSimCreateReqVO reqVO = randomPojo(ErpAssetsSimCreateReqVO.class);
 
         // 调用
-        Long assetsSimId = assetsSimService.createAssetsSim(reqVO);
+        String assetsSimId = assetsSimService.createAssetsSim(reqVO);
         // 断言
         assertNotNull(assetsSimId);
         // 校验记录的属性是否正确
@@ -86,7 +86,7 @@ public class ErpAssetsSimServiceImplTest extends BaseDbUnitTest {
         ErpAssetsSimDO dbAssetsSim = randomPojo(ErpAssetsSimDO.class);
         assetsSimMapper.insert(dbAssetsSim);// @Sql: 先插入出一条存在的数据
         // 准备参数
-        Long id = dbAssetsSim.getId();
+        String id = dbAssetsSim.getId();
 
         // 调用
         assetsSimService.deleteAssetsSim(id);
@@ -97,7 +97,7 @@ public class ErpAssetsSimServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testDeleteAssetsSim_notExists() {
         // 准备参数
-        Long id = randomLongId();
+        String id = randomString();
 
         // 调用, 并断言异常
         assertServiceException(() -> assetsSimService.deleteAssetsSim(id), ASSETS_SIM_NOT_EXISTS);

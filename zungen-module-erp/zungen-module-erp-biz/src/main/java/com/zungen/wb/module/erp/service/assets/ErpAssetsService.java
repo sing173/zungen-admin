@@ -29,11 +29,25 @@ public interface ErpAssetsService {
     void updateAssets(@Valid ErpAssetsUpdateReqVO updateReqVO);
 
     /**
+     * 根据资产设备id更新资产汇总表
+     *
+     * @param updateReqVO 更新信息
+     */
+    void updateByAssetId(@Valid ErpAssetsUpdateReqVO updateReqVO);
+
+    /**
      * 删除资产
      *
      * @param id 编号
      */
     void deleteAssets(Long id);
+
+    /**
+     * 根据实际对应的资产id删除资产汇总表记录
+     *
+     * @param assetId 实际对应各设备表的id
+     */
+    void deleteAssetsByAssetId(String assetId);
 
     /**
      * 获得资产
