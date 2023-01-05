@@ -1,13 +1,16 @@
 package com.zungen.wb.module.erp.dal.mysql.assets;
 
-import java.util.*;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zungen.wb.framework.common.pojo.PageResult;
-import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
 import com.zungen.wb.framework.mybatis.core.mapper.BaseMapperX;
+import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
+import com.zungen.wb.module.erp.controller.admin.assets.vo.ErpAssetsSimExportReqVO;
+import com.zungen.wb.module.erp.controller.admin.assets.vo.ErpAssetsSimPageReqVO;
 import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsSimDO;
 import org.apache.ibatis.annotations.Mapper;
-import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 /**
  * 资产-sim卡 Mapper
@@ -43,4 +46,10 @@ public interface ErpAssetsSimMapper extends BaseMapperX<ErpAssetsSimDO> {
                 .orderByDesc(ErpAssetsSimDO::getId));
     }
 
+    default ErpAssetsSimDO selectChildAssetByPadId(String padId){
+        return selectOne(new QueryWrapper<ErpAssetsSimDO>().eq("pad_id", padId));
+    }
+
+    @Update("UPDATE erp_assets_sim SET pad_id = #{arg1} WHERE id = #{arg0}")
+    void updatePadIdById(String id, String padId);
 }

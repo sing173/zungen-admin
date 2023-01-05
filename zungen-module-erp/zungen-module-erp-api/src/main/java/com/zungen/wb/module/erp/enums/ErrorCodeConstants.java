@@ -19,4 +19,6 @@ public interface ErrorCodeConstants {
     ErrorCode ASSETS_ID_READER_NOT_EXISTS = new ErrorCode(1010000004, "资产-身份证读取仪不存在");
     // ========== 资产-sim卡 1-010-000-005 ==========
     ErrorCode ASSETS_SIM_NOT_EXISTS = new ErrorCode(1010000005, "资产-sim卡不存在");
+    // ========== 故障-记录 1-010-001-001 ==========
+    ErrorCode FAULT_NOT_EXISTS = new ErrorCode(1010001001, "故障记录不存在");
 }

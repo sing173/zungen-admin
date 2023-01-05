@@ -35,21 +35,24 @@ public interface ErpAssetsConvert {
     @Mappings({@Mapping(source = "id", target = "assetId")})
     ErpAssetsCreateReqVO convertByPad(ErpAssetsPadDO bean);
 
-    @Mappings({@Mapping(source = "id", target = "assetId")})
+    @Mappings({@Mapping(source = "id", target = "assetId"),
+            @Mapping(target = "id", ignore = true)})
     ErpAssetsUpdateReqVO convertByPad2(ErpAssetsPadDO bean);
 
     //-- 根据背夹设备编辑资产汇总记录 --//
     @Mappings({@Mapping(source = "id", target = "assetId")})
     ErpAssetsCreateReqVO convertByBack(ErpAssetsBackDO bean);
 
-    @Mappings({@Mapping(source = "id", target = "assetId")})
+    @Mappings({@Mapping(source = "id", target = "assetId"),
+            @Mapping(target = "id", ignore = true)})
     ErpAssetsUpdateReqVO convertByBack2(ErpAssetsBackDO bean);
 
     //-- 根据读取仪设备编辑资产汇总记录 --//
     @Mappings({@Mapping(source = "id", target = "assetId")})
     ErpAssetsCreateReqVO convertByReader(ErpAssetsIdReaderDO bean);
 
-    @Mappings({@Mapping(source = "id", target = "assetId")})
+    @Mappings({@Mapping(source = "id", target = "assetId"),
+            @Mapping(target = "id", ignore = true)})
     ErpAssetsUpdateReqVO convertByReader2(ErpAssetsIdReaderDO bean);
 
     //-- 根据读取仪设备编辑资产汇总记录 --//
@@ -60,7 +63,8 @@ public interface ErpAssetsConvert {
 
     @Mappings({@Mapping(source = "id", target = "assetId"),
             @Mapping(source = "code", target = "sn"),
-            @Mapping(source = "code", target = "code")})
+            @Mapping(source = "code", target = "code"),
+            @Mapping(target = "id", ignore = true)})
     ErpAssetsUpdateReqVO convertBySim2(ErpAssetsSimDO bean);
 
 }

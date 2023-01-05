@@ -67,4 +67,16 @@ public interface ErpAssetsSimService {
      */
     List<ErpAssetsSimDO> getAssetsSimList(ErpAssetsSimExportReqVO exportReqVO);
 
+    /**
+     * 更新关联padId
+     * @param id
+     * @param padId
+     */
+    void updatePadIdById(String id, String padId);
+
+    /**
+     * 根据padId查找sim卡
+     * @param padId
+     */
+    ErpAssetsSimDO selectChildAssetByPadId(String padId);
 }

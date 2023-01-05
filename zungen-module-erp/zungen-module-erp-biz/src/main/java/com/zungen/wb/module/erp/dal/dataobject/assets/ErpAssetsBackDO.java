@@ -28,7 +28,7 @@ public class ErpAssetsBackDO extends BaseDO {
     /**
      * 平板id
      */
-    private Long padId;
+    private String padId;
     /**
      * 背夹名称
      */

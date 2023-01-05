@@ -20,7 +20,7 @@ import com.zungen.wb.module.erp.service.assets.ErpAssetsService;
 
 @Api(tags = "管理后台 - 资产")
 @RestController
-@RequestMapping("/erp/assets")
+@RequestMapping("/erp/assets/sum")
 @Validated
 public class ErpAssetsController {
 

@@ -36,7 +36,7 @@ public class ErpAssetsSimDO extends BaseDO {
     /**
      * 平板id
      */
-    private Long padId;
+    private String padId;
     /**
      * sim卡iccid号
      */

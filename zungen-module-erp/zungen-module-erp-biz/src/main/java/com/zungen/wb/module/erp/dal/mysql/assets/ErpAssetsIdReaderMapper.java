@@ -1,13 +1,16 @@
 package com.zungen.wb.module.erp.dal.mysql.assets;
 
-import java.util.*;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zungen.wb.framework.common.pojo.PageResult;
-import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
 import com.zungen.wb.framework.mybatis.core.mapper.BaseMapperX;
+import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
+import com.zungen.wb.module.erp.controller.admin.assets.vo.ErpAssetsIdReaderExportReqVO;
+import com.zungen.wb.module.erp.controller.admin.assets.vo.ErpAssetsIdReaderPageReqVO;
 import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsIdReaderDO;
 import org.apache.ibatis.annotations.Mapper;
-import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 /**
  * 资产-身份证读取仪 Mapper
@@ -41,4 +44,10 @@ public interface ErpAssetsIdReaderMapper extends BaseMapperX<ErpAssetsIdReaderDO
                 .orderByDesc(ErpAssetsIdReaderDO::getId));
     }
 
+    default ErpAssetsIdReaderDO selectChildAssetByPadId(String padId){
+        return selectOne(new QueryWrapper<ErpAssetsIdReaderDO>().eq("pad_id", padId));
+    }
+
+    @Update("UPDATE erp_assets_id_reader SET pad_id = #{arg1} WHERE id = #{arg0}")
+    void updatePadIdById(String id, String padId);
 }

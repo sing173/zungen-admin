@@ -67,4 +67,19 @@ public interface ErpAssetsBackService {
      */
     List<ErpAssetsBackDO> getAssetsBackList(ErpAssetsBackExportReqVO exportReqVO);
 
+    /**
+     * 更新关联平板id
+     * @param id
+     * @param padId
+     */
+    void updatePadIdById(String id, String padId);
+
+
+    /**
+     * 根据关联padId找背夹
+     * @param padId
+     * @return
+     */
+    ErpAssetsBackDO selectChildAssetByPadId(String padId);
+
 }

@@ -28,7 +28,7 @@ import com.zungen.wb.module.erp.service.assets.ErpAssetsBackService;
 
 @Api(tags = "管理后台 - 资产-背夹")
 @RestController
-@RequestMapping("/erp/assets-back")
+@RequestMapping("/erp/assets/back")
 @Validated
 public class ErpAssetsBackController {
 
@@ -65,6 +65,15 @@ public class ErpAssetsBackController {
     @PreAuthorize("@ss.hasPermission('erp:assets-back:query')")
     public CommonResult<ErpAssetsBackRespVO> getAssetsBack(@RequestParam("id") String id) {
         ErpAssetsBackDO assetsBack = assetsBackService.getAssetsBack(id);
+        return success(ErpAssetsBackConvert.INSTANCE.convert(assetsBack));
+    }
+
+    @GetMapping("/getByPadId")
+    @ApiOperation("通过平板id获得资产-背夹")
+    @ApiImplicitParam(name = "padId", value = "平板ID", required = true, example = "1024", dataTypeClass = String.class)
+    @PreAuthorize("@ss.hasPermission('erp:assets-back:queryByPadId')")
+    public CommonResult<ErpAssetsBackRespVO> getAssetsBackByPadId(@RequestParam("padId") String padId) {
+        ErpAssetsBackDO assetsBack = assetsBackService.selectChildAssetByPadId(padId);
         return success(ErpAssetsBackConvert.INSTANCE.convert(assetsBack));
     }
 

@@ -67,4 +67,17 @@ public interface ErpAssetsIdReaderService {
      */
     List<ErpAssetsIdReaderDO> getAssetsIdReaderList(ErpAssetsIdReaderExportReqVO exportReqVO);
 
+    /**
+     * 更新关联平板id
+     * @param id
+     * @param padId
+     */
+    void updatePadIdById(String id, String padId);
+
+    /**
+     * 根据关联padId找读取仪
+     * @param padId
+     * @return
+     */
+    ErpAssetsIdReaderDO selectChildAssetByPadId(String padId);
 }

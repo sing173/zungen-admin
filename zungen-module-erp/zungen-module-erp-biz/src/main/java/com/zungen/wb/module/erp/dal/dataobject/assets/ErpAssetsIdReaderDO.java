@@ -28,7 +28,7 @@ public class ErpAssetsIdReaderDO extends BaseDO {
     /**
      * 平板id
      */
-    private Long padId;
+    private String padId;
     /**
      * 身份证读取仪名称
      */

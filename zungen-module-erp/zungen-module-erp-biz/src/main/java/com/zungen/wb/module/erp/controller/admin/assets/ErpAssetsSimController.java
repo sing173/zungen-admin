@@ -1,34 +1,33 @@
 package com.zungen.wb.module.erp.controller.admin.assets;
 
-import org.springframework.web.bind.annotation.*;
-import javax.annotation.Resource;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.security.access.prepost.PreAuthorize;
-import io.swagger.annotations.*;
-
-import javax.validation.constraints.*;
-import javax.validation.*;
-import javax.servlet.http.*;
-import java.util.*;
-import java.io.IOException;
-
-import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.common.pojo.CommonResult;
-import static com.zungen.wb.framework.common.pojo.CommonResult.success;
-
+import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.excel.core.util.ExcelUtils;
-
 import com.zungen.wb.framework.operatelog.core.annotations.OperateLog;
-import static com.zungen.wb.framework.operatelog.core.enums.OperateTypeEnum.*;
-
 import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
-import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsSimDO;
 import com.zungen.wb.module.erp.convert.assets.ErpAssetsSimConvert;
+import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsSimDO;
 import com.zungen.wb.module.erp.service.assets.ErpAssetsSimService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+
+import static com.zungen.wb.framework.common.pojo.CommonResult.success;
+import static com.zungen.wb.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
 
 @Api(tags = "管理后台 - 资产-sim卡")
 @RestController
-@RequestMapping("/erp/assets-sim")
+@RequestMapping("/erp/assets/sim")
 @Validated
 public class ErpAssetsSimController {
 
@@ -65,6 +64,15 @@ public class ErpAssetsSimController {
     @PreAuthorize("@ss.hasPermission('erp:assets-sim:query')")
     public CommonResult<ErpAssetsSimRespVO> getAssetsSim(@RequestParam("id") String id) {
         ErpAssetsSimDO assetsSim = assetsSimService.getAssetsSim(id);
+        return success(ErpAssetsSimConvert.INSTANCE.convert(assetsSim));
+    }
+
+    @GetMapping("/getByPadId")
+    @ApiOperation("通过平板id获得资产-sim卡")
+    @ApiImplicitParam(name = "padId", value = "平板ID", required = true, example = "1024", dataTypeClass = String.class)
+    @PreAuthorize("@ss.hasPermission('erp:assets-sim:queryByPadId')")
+    public CommonResult<ErpAssetsSimRespVO> getAssetsBackByPadId(@RequestParam("padId") String padId) {
+        ErpAssetsSimDO assetsSim = assetsSimService.selectChildAssetByPadId(padId);
         return success(ErpAssetsSimConvert.INSTANCE.convert(assetsSim));
     }
 

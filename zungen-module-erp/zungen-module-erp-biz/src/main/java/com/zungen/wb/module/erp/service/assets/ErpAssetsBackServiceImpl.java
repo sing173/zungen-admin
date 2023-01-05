@@ -80,6 +80,11 @@ public class ErpAssetsBackServiceImpl implements ErpAssetsBackService {
     }
 
     @Override
+    public ErpAssetsBackDO selectChildAssetByPadId(String padId) {
+        return assetsBackMapper.selectChildAssetByPadId(padId);
+    }
+
+    @Override
     public List<ErpAssetsBackDO> getAssetsBackList(Collection<String> ids) {
         return assetsBackMapper.selectBatchIds(ids);
     }
@@ -92,6 +97,12 @@ public class ErpAssetsBackServiceImpl implements ErpAssetsBackService {
     @Override
     public List<ErpAssetsBackDO> getAssetsBackList(ErpAssetsBackExportReqVO exportReqVO) {
         return assetsBackMapper.selectList(exportReqVO);
+    }
+
+    @Override
+    public void updatePadIdById(String id, String padId) {
+        assetsBackMapper.updatePadIdById(id, padId);
+        assetsService.updateParentByPadId(id, padId);
     }
 
 }

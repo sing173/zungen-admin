@@ -94,4 +94,15 @@ public class ErpAssetsIdReaderServiceImpl implements ErpAssetsIdReaderService {
         return assetsIdReaderMapper.selectList(exportReqVO);
     }
 
+    @Override
+    public void updatePadIdById(String id, String padId) {
+        assetsIdReaderMapper.updatePadIdById(id, padId);
+        assetsService.updateParentByPadId(id, padId);
+    }
+
+    @Override
+    public ErpAssetsIdReaderDO selectChildAssetByPadId(String padId) {
+        return assetsIdReaderMapper.selectChildAssetByPadId(padId);
+    }
+
 }

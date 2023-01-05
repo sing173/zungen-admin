@@ -73,4 +73,11 @@ public interface ErpAssetsService {
      */
     PageResult<ErpAssetsDO> getAssetsPage(ErpAssetsPageReqVO pageReqVO);
 
+    /**
+     * 更新关联资产 parent
+     * @param assetId
+     * @param padId
+     */
+    void updateParentByPadId(String assetId, String padId);
+
 }

@@ -8,6 +8,7 @@ import com.zungen.wb.framework.mybatis.core.mapper.BaseMapperX;
 import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsDO;
 import org.apache.ibatis.annotations.Mapper;
 import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * 资产 Mapper
@@ -38,5 +39,8 @@ public interface ErpAssetsMapper extends BaseMapperX<ErpAssetsDO> {
     default void deleteByAssetId(String assetId){
         delete(Wrappers.lambdaUpdate(ErpAssetsDO.class).eq(ErpAssetsDO::getAssetId, assetId));
     }
+
+    @Update("UPDATE erp_assets SET parent = #{arg1} WHERE asset_id = #{arg0}")
+    void updateParentByPadId(String assetId, String padId);
 
 }

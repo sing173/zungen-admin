@@ -15,4 +15,12 @@ public class ErpAssetsPadUpdateReqVO extends ErpAssetsPadBaseVO {
     @NotNull(message = "唯一标识不能为空")
     private String id;
 
+    @ApiModelProperty(value = "关联背夹ID")
+    private String backId;
+
+    @ApiModelProperty(value = "关联读取仪ID")
+    private String readerId;
+
+    @ApiModelProperty(value = "关联SIM卡ID")
+    private String simId;
 }

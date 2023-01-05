@@ -10,5 +10,12 @@ import javax.validation.constraints.*;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class ErpAssetsPadCreateReqVO extends ErpAssetsPadBaseVO {
+    @ApiModelProperty(value = "关联背夹ID")
+    private String backId;
 
+    @ApiModelProperty(value = "关联读取仪ID")
+    private String readerId;
+
+    @ApiModelProperty(value = "关联SIM卡ID")
+    private String simId;
 }

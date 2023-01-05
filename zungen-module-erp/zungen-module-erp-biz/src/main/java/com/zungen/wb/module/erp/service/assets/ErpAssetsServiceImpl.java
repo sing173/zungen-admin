@@ -102,5 +102,10 @@ public class ErpAssetsServiceImpl implements ErpAssetsService {
         return assetsMapper.selectPage(pageReqVO);
     }
 
+    @Override
+    public void updateParentByPadId(String assetId, String padId) {
+        assetsMapper.updateParentByPadId(assetId, padId);
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.zungen.wb.module.erp.service.assets;
 
+import cn.hutool.core.util.StrUtil;
 import com.zungen.wb.module.erp.convert.assets.ErpAssetsConvert;
 import com.zungen.wb.module.erp.enums.DictTypeConstants;
 import com.zungen.wb.module.erp.enums.assets.AssetsTypeEnum;
@@ -33,6 +34,15 @@ public class ErpAssetsPadServiceImpl implements ErpAssetsPadService {
     @Resource
     private ErpAssetsService assetsService;
 
+    @Resource
+    private ErpAssetsBackService assetsBackService;
+
+    @Resource
+    private ErpAssetsIdReaderService assetsIdReaderService;
+
+    @Resource
+    private ErpAssetsSimService assetsSimService;
+
     @Override
     public String createAssetsPad(ErpAssetsPadCreateReqVO createReqVO) {
         // 插入
@@ -43,6 +53,8 @@ public class ErpAssetsPadServiceImpl implements ErpAssetsPadService {
         assetsCreateReqVO.setType(AssetsTypeEnum.PAD.getType());
         assetsCreateReqVO.setCheckInTime(new Date());
         assetsService.createAssets(assetsCreateReqVO);
+        //更新设备关联
+        updateAssetPadId(createReqVO.getBackId(), assetsPad.getId(), createReqVO.getReaderId(), createReqVO.getSimId());
 
         // 返回
         return assetsPad.getId();
@@ -57,6 +69,20 @@ public class ErpAssetsPadServiceImpl implements ErpAssetsPadService {
         assetsPadMapper.updateById(updateObj);
         //更新资产汇总表
         assetsService.updateByAssetId(ErpAssetsConvert.INSTANCE.convertByPad2(updateObj));
+        //更新设备关联
+        updateAssetPadId(updateReqVO.getBackId(), updateReqVO.getId(), updateReqVO.getReaderId(), updateReqVO.getSimId());
+    }
+
+    private void updateAssetPadId(String backId, String padId, String readerId, String simId) {
+        if(StrUtil.isNotEmpty(backId)) {
+            assetsBackService.updatePadIdById(backId, padId);
+        }
+        if(StrUtil.isNotEmpty(readerId)) {
+            assetsIdReaderService.updatePadIdById(readerId, padId);
+        }
+        if(StrUtil.isNotEmpty(simId)) {
+            assetsSimService.updatePadIdById(simId, padId);
+        }
     }
 
     @Override

@@ -28,7 +28,7 @@ import com.zungen.wb.module.erp.service.assets.ErpAssetsPadService;
 
 @Api(tags = "管理后台 - 资产-平板")
 @RestController
-@RequestMapping("/erp/assets-pad")
+@RequestMapping("/erp/assets/pad")
 @Validated
 public class ErpAssetsPadController {
 

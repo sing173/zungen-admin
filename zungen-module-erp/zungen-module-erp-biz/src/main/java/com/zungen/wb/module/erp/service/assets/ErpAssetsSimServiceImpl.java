@@ -93,4 +93,15 @@ public class ErpAssetsSimServiceImpl implements ErpAssetsSimService {
         return assetsSimMapper.selectList(exportReqVO);
     }
 
+    @Override
+    public void updatePadIdById(String id, String padId) {
+        assetsSimMapper.updatePadIdById(id, padId);
+        assetsService.updateParentByPadId(id, padId);
+    }
+
+    @Override
+    public ErpAssetsSimDO selectChildAssetByPadId(String padId) {
+        return assetsSimMapper.selectChildAssetByPadId(padId);
+    }
+
 }

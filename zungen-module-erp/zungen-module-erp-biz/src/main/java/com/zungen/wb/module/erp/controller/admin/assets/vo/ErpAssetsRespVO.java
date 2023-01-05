@@ -10,6 +10,10 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class ErpAssetsRespVO extends ErpAssetsBaseVO {
+    @ApiModelProperty(value = "资产分类", required = true)
+    @NotNull(message = "资产分类不能为空")
+    private Integer type;
+
     @ApiModelProperty(value = "唯一标识", required = true)
     @NotNull(message = "唯一标识不能为空")
     private Long id;

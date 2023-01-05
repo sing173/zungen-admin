@@ -2,9 +2,11 @@ package com.zungen.wb.module.erp.dal.mysql.assets;
 
 import java.util.*;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.mybatis.core.query.LambdaQueryWrapperX;
 import com.zungen.wb.framework.mybatis.core.mapper.BaseMapperX;
+import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsDO;
 import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsPadDO;
 import org.apache.ibatis.annotations.Mapper;
 import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
@@ -54,5 +56,4 @@ public interface ErpAssetsPadMapper extends BaseMapperX<ErpAssetsPadDO> {
                 .betweenIfPresent(ErpAssetsPadDO::getCreateTime, reqVO.getCreateTime())
                 .orderByDesc(ErpAssetsPadDO::getId));
     }
-
 }

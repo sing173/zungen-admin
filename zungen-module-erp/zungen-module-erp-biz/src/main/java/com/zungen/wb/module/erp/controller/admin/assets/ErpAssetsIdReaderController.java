@@ -1,34 +1,33 @@
 package com.zungen.wb.module.erp.controller.admin.assets;
 
-import org.springframework.web.bind.annotation.*;
-import javax.annotation.Resource;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.security.access.prepost.PreAuthorize;
-import io.swagger.annotations.*;
-
-import javax.validation.constraints.*;
-import javax.validation.*;
-import javax.servlet.http.*;
-import java.util.*;
-import java.io.IOException;
-
-import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.common.pojo.CommonResult;
-import static com.zungen.wb.framework.common.pojo.CommonResult.success;
-
+import com.zungen.wb.framework.common.pojo.PageResult;
 import com.zungen.wb.framework.excel.core.util.ExcelUtils;
-
 import com.zungen.wb.framework.operatelog.core.annotations.OperateLog;
-import static com.zungen.wb.framework.operatelog.core.enums.OperateTypeEnum.*;
-
 import com.zungen.wb.module.erp.controller.admin.assets.vo.*;
-import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsIdReaderDO;
 import com.zungen.wb.module.erp.convert.assets.ErpAssetsIdReaderConvert;
+import com.zungen.wb.module.erp.dal.dataobject.assets.ErpAssetsIdReaderDO;
 import com.zungen.wb.module.erp.service.assets.ErpAssetsIdReaderService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+
+import static com.zungen.wb.framework.common.pojo.CommonResult.success;
+import static com.zungen.wb.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
 
 @Api(tags = "管理后台 - 资产-身份证读取仪")
 @RestController
-@RequestMapping("/erp/assets-id-reader")
+@RequestMapping("/erp/assets/reader")
 @Validated
 public class ErpAssetsIdReaderController {
 
@@ -65,6 +64,15 @@ public class ErpAssetsIdReaderController {
     @PreAuthorize("@ss.hasPermission('erp:assets-id-reader:query')")
     public CommonResult<ErpAssetsIdReaderRespVO> getAssetsIdReader(@RequestParam("id") String id) {
         ErpAssetsIdReaderDO assetsIdReader = assetsIdReaderService.getAssetsIdReader(id);
+        return success(ErpAssetsIdReaderConvert.INSTANCE.convert(assetsIdReader));
+    }
+
+    @GetMapping("/getByPadId")
+    @ApiOperation("通过平板id获得资产-读取仪")
+    @ApiImplicitParam(name = "padId", value = "平板ID", required = true, example = "1024", dataTypeClass = String.class)
+    @PreAuthorize("@ss.hasPermission('erp:assets-id-reader:queryByPadId')")
+    public CommonResult<ErpAssetsIdReaderRespVO> getAssetsBackByPadId(@RequestParam("padId") String padId) {
+        ErpAssetsIdReaderDO assetsIdReader = assetsIdReaderService.selectChildAssetByPadId(padId);
         return success(ErpAssetsIdReaderConvert.INSTANCE.convert(assetsIdReader));
     }
 
