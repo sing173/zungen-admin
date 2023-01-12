@@ -58,6 +58,14 @@ public interface ErpAssetsService {
     ErpAssetsDO getAssets(Long id);
 
     /**
+     * 通过各设备表id获得资产
+     *
+     * @param assetId 对应各设备表id
+     * @return 资产
+     */
+    ErpAssetsDO getAssetByAssetId(String assetId);
+
+    /**
      * 获得资产列表
      *
      * @param ids 编号

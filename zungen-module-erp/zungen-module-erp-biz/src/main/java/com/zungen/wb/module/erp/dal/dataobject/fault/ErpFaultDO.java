@@ -61,5 +61,16 @@ public class ErpFaultDO extends BaseDO {
      * 备注
      */
     private String remark;
-
+    /**
+     * 故障检查结果
+     */
+    private String faultResult;
+    /**
+     * 故障处理方式
+     */
+    private String faultHandle;
+    /**
+     * 状态
+     */
+    private Integer status;
 }

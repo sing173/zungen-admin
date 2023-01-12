@@ -20,7 +20,7 @@ public interface ErpAssetsMapper extends BaseMapperX<ErpAssetsDO> {
 
     default PageResult<ErpAssetsDO> selectPage(ErpAssetsPageReqVO reqVO) {
         return selectPage(reqVO, new LambdaQueryWrapperX<ErpAssetsDO>()
-                .eqIfPresent(ErpAssetsDO::getCode, reqVO.getCode())
+                .likeIfPresent(ErpAssetsDO::getCode, reqVO.getCode())
                 .eqIfPresent(ErpAssetsDO::getType, reqVO.getType())
                 .eqIfPresent(ErpAssetsDO::getStatus, reqVO.getStatus())
                 .betweenIfPresent(ErpAssetsDO::getCheckInTime, reqVO.getCheckInTime())

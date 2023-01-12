@@ -93,6 +93,11 @@ public class ErpAssetsServiceImpl implements ErpAssetsService {
     }
 
     @Override
+    public ErpAssetsDO getAssetByAssetId(String assetId) {
+        return assetsMapper.selectByAssetId(assetId);
+    }
+
+    @Override
     public List<ErpAssetsDO> getAssetsList(Collection<Long> ids) {
         return assetsMapper.selectBatchIds(ids);
     }

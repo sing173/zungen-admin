@@ -1,22 +1,21 @@
 package com.zungen.wb.module.erp.controller.admin.fault.vo;
 
-import lombok.*;
-import java.util.*;
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
 
-@ApiModel("管理后台 - 故障 Response VO")
+@ApiModel("管理后台 - 故障处理 Request VO")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class ErpFaultRespVO extends ErpFaultBaseVO {
-
+public class ErpFaultHandleReqVO extends ErpFaultBaseVO {
     @ApiModelProperty(value = "唯一标识", required = true)
+    @NotNull(message = "唯一标识不能为空")
     private Long id;
-
-    @ApiModelProperty(value = "创建时间", required = true)
-    private Date createTime;
 
     @ApiModelProperty(value = "故障检查结果", required = true)
     @NotNull(message = "故障检查结果不能为空")
@@ -29,5 +28,4 @@ public class ErpFaultRespVO extends ErpFaultBaseVO {
 
     @ApiModelProperty(value = "状态")
     private Integer status;
-
 }

@@ -29,6 +29,13 @@ public interface ErpFaultService {
     void updateFault(@Valid ErpFaultUpdateReqVO updateReqVO);
 
     /**
+     * 处理故障
+     *
+     * @param handleReqVO
+     */
+    void handleFault(@Valid ErpFaultHandleReqVO handleReqVO);
+
+    /**
      * 删除故障
      *
      * @param id 编号

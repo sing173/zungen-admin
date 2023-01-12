@@ -31,4 +31,5 @@ public interface ErpFaultConvert {
 
     List<ErpFaultExcelVO> convertList02(List<ErpFaultDO> list);
 
+    ErpFaultDO convert(ErpFaultHandleReqVO handleReqVO);
 }

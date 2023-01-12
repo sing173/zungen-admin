@@ -50,6 +50,14 @@ public class ErpFaultController {
         return success(true);
     }
 
+    @PutMapping("/handle")
+    @ApiOperation("处理故障")
+    @PreAuthorize("@ss.hasPermission('erp:fault:update')")
+    public CommonResult<Boolean> HandleFault(@Valid @RequestBody ErpFaultHandleReqVO handleReqVO) {
+        faultService.handleFault(handleReqVO);
+        return success(true);
+    }
+
     @DeleteMapping("/delete")
     @ApiOperation("删除故障")
     @ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)

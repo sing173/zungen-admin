@@ -2,6 +2,8 @@ package com.zungen.wb.module.erp.service.fault;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import javax.validation.Valid;
+
 import org.springframework.validation.annotation.Validated;
 
 import java.util.*;
@@ -42,6 +44,16 @@ public class ErpFaultServiceImpl implements ErpFaultService {
         this.validateFaultExists(updateReqVO.getId());
         // 更新
         ErpFaultDO updateObj = ErpFaultConvert.INSTANCE.convert(updateReqVO);
+        faultMapper.updateById(updateObj);
+    }
+
+    @Override
+    public void handleFault(@Valid ErpFaultHandleReqVO handleReqVO) {
+        // 校验存在
+        this.validateFaultExists(handleReqVO.getId());
+        // 更新
+        ErpFaultDO updateObj = ErpFaultConvert.INSTANCE.convert(handleReqVO);
+        updateObj.setStatus(1);
         faultMapper.updateById(updateObj);
     }
 

@@ -60,6 +60,15 @@ public class ErpAssetsController {
         return success(ErpAssetsConvert.INSTANCE.convert(assets));
     }
 
+    @GetMapping("/getByAssetId")
+    @ApiOperation("通过对应的设备id获得资产")
+    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
+    @PreAuthorize("@ss.hasPermission('erp:assets:query')")
+    public CommonResult<ErpAssetsRespVO> getAssetByAssetId(@RequestParam("id") String assetId) {
+        ErpAssetsDO assets = assetsService.getAssetByAssetId(assetId);
+        return success(ErpAssetsConvert.INSTANCE.convert(assets));
+    }
+
     @GetMapping("/list")
     @ApiOperation("获得资产列表")
     @ApiImplicitParam(name = "ids", value = "编号列表", required = true, example = "1024,2048", dataTypeClass = List.class)
