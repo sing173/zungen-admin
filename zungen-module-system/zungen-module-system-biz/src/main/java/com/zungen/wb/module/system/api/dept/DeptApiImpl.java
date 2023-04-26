@@ -4,7 +4,7 @@ import com.zungen.wb.module.system.api.dept.dto.DeptRespDTO;
 import com.zungen.wb.module.system.convert.dept.DeptConvert;
 import com.zungen.wb.module.system.dal.dataobject.dept.DeptDO;
 import com.zungen.wb.module.system.service.dept.DeptService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;

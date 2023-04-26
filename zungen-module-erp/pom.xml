@@ -7,7 +7,7 @@
   <parent>
     <artifactId>zungen</artifactId>
     <groupId>com.zungen.wb</groupId>
-    <version>1.6.3-SNAPSHOT</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>zungen-module-erp</artifactId>

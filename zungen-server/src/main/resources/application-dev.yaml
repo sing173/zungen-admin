@@ -44,24 +44,24 @@ spring:
       primary: master
       datasource:
         master:
-          name: zungen_pda_admin
-          url: jdbc:mysql://192.168.1.172:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+          name: zungen-admin-v1.6
+          url: jdbc:mysql://192.168.124.10:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
           driver-class-name: com.mysql.jdbc.Driver
           username: root
-          password: Zungen@123#@!
+          password: a123456
         slave: # 模拟从库，可根据自己需要修改 # 模拟从库，可根据自己需要修改
-          name: zungen_pda_admin
-          url: jdbc:mysql://192.168.1.172:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+          name: zungen-admin-v1.6
+          url: jdbc:mysql://192.168.124.10:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
           driver-class-name: com.mysql.jdbc.Driver
           username: root
-          password: Zungen@123#@!
+          password: a123456
 
   # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
-    host: 192.168.1.172 # 地址
+    host: localhost # 地址
     port: 6379 # 端口
     database: 1 # 数据库索引
-    password: 123456 # 密码，建议生产环境开启
+#    password: 123456 # 密码，建议生产环境开启
 
 jasypt:
   encryptor:
@@ -156,11 +156,11 @@ logging:
   file:
     name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
 
---- #################### RPC相关配置 ####################
-dubbo:
-  # Dubbo 注册中心配
-  registry:
-    address: zookeeper://192.168.1.172:2181 # 注册中心地址
+#--- #################### RPC相关配置 ####################
+#dubbo:
+#  # Dubbo 注册中心配
+#  registry:
+#    address: zookeeper://192.168.1.172:2181 # 注册中心地址
 
 --- #################### 微信公众号相关配置 ####################
 wx: # 参见 https://github.com/Wechat-Group/WxJava/blob/develop/spring-boot-starters/wx-java-mp-spring-boot-starter/README.md 文档

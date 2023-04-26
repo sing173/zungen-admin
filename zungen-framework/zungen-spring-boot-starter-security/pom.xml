@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.zungen.wb</groupId>
         <artifactId>zungen-framework</artifactId>
-        <version>1.6.3-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zungen-spring-boot-starter-security</artifactId>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-system-api</artifactId> <!-- 需要使用它，进行 Token 的校验 -->
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

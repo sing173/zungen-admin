@@ -1,0 +1,6 @@
+version: '2'
+services:
+  zungen-admin:
+    build: .
+    ports:
+      - "48080:48080"

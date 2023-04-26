@@ -46,7 +46,7 @@ public class ErpAssetsPadExportReqVO {
     private String mac;
 
     @ApiModelProperty(value = "使用部门")
-    private Long useDept;
+    private String useDept;
 
     @ApiModelProperty(value = "备注")
     private String remark;

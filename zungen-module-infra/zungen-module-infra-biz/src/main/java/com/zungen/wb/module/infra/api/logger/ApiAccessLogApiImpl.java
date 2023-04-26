@@ -2,7 +2,7 @@ package com.zungen.wb.module.infra.api.logger;
 
 import com.zungen.wb.module.infra.api.logger.dto.ApiAccessLogCreateReqDTO;
 import com.zungen.wb.module.infra.service.logger.ApiAccessLogService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;

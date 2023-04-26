@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.zungen.wb</groupId>
         <artifactId>zungen-module-member</artifactId>
-        <version>1.6.3-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zungen-module-member-biz</artifactId>
@@ -21,17 +21,17 @@
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-member-api</artifactId>
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-system-api</artifactId>
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-infra-api</artifactId>
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <!-- 业务组件 -->

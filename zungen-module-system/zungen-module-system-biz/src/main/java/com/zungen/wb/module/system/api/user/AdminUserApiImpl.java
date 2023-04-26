@@ -4,7 +4,7 @@ import com.zungen.wb.module.system.api.user.dto.AdminUserRespDTO;
 import com.zungen.wb.module.system.convert.user.UserConvert;
 import com.zungen.wb.module.system.dal.dataobject.user.AdminUserDO;
 import com.zungen.wb.module.system.service.user.AdminUserService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collection;

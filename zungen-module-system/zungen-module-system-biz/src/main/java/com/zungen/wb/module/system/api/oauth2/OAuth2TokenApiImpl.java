@@ -6,7 +6,7 @@ import com.zungen.wb.module.system.api.oauth2.dto.OAuth2AccessTokenRespDTO;
 import com.zungen.wb.module.system.convert.auth.OAuth2TokenConvert;
 import com.zungen.wb.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import com.zungen.wb.module.system.service.oauth2.OAuth2TokenService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 

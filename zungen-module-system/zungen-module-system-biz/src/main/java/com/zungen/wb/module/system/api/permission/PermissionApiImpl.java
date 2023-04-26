@@ -2,7 +2,7 @@ package com.zungen.wb.module.system.api.permission;
 
 import com.zungen.wb.module.system.api.permission.dto.DeptDataPermissionRespDTO;
 import com.zungen.wb.module.system.service.permission.PermissionService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collection;

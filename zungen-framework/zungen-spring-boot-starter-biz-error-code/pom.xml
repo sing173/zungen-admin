@@ -5,7 +5,7 @@
     <parent>
         <artifactId>zungen-framework</artifactId>
         <groupId>com.zungen.wb</groupId>
-        <version>1.6.3-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zungen-spring-boot-starter-biz-error-code</artifactId>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-system-api</artifactId> <!-- 需要使用它，进行操作日志的记录 -->
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>zungen-framework</artifactId>
         <groupId>com.zungen.wb</groupId>
-        <version>1.6.3-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zungen-spring-boot-starter-biz-data-permission</artifactId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.zungen.wb</groupId>
             <artifactId>zungen-module-system-api</artifactId> <!-- 需要使用它，进行数据权限的获取 -->
-            <version>1.6.3-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <!-- Test 测试相关 -->

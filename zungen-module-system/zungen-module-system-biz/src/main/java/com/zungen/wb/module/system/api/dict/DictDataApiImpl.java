@@ -4,7 +4,7 @@ import com.zungen.wb.module.system.api.dict.dto.DictDataRespDTO;
 import com.zungen.wb.module.system.convert.dict.DictDataConvert;
 import com.zungen.wb.module.system.dal.dataobject.dict.DictDataDO;
 import com.zungen.wb.module.system.service.dict.DictDataService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collection;

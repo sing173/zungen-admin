@@ -51,7 +51,7 @@ public class ErpAssetsPadExcelVO {
     private String mac;
 
     @ExcelProperty("使用部门")
-    private Long useDept;
+    private String useDept;
 
     @ExcelProperty("备注")
     private String remark;

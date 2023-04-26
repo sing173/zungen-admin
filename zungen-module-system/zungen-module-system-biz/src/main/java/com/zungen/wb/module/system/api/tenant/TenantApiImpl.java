@@ -1,7 +1,7 @@
 package com.zungen.wb.module.system.api.tenant;
 
 import com.zungen.wb.module.system.service.tenant.TenantService;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;

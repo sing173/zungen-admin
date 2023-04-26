@@ -1,5 +1,8 @@
 package com.zungen.wb.module.erp.dal.dataobject.assets;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
+import com.gitee.sunchenbin.mybatis.actable.annotation.IsAutoIncrement;
+import com.gitee.sunchenbin.mybatis.actable.annotation.IsKey;
 import lombok.*;
 import java.util.*;
 import com.baomidou.mybatisplus.annotation.*;
@@ -24,30 +27,38 @@ public class ErpAssetsIdReaderDO extends BaseDO {
      * 唯一标识
      */
     @TableId(type = IdType.ASSIGN_UUID)
+    @IsKey
+    @Column(comment = "唯一标识")
     private String id;
     /**
      * 平板id
      */
+    @Column(comment = "平板id")
     private String padId;
     /**
      * 身份证读取仪名称
      */
+    @Column(comment = "身份证读取仪名称")
     private String name;
     /**
      * 资产编号
      */
+    @Column(comment = "资产编号")
     private String code;
     /**
      * 序列号
      */
+    @Column(comment = "序列号")
     private String sn;
     /**
      * 状态
      */
+    @Column(comment = "状态")
     private Integer status;
     /**
      * 备注
      */
+    @Column(comment = "备注")
     private String remark;
 
 }

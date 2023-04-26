@@ -17,6 +17,9 @@ public class ErpAssetsPageReqVO extends PageParam {
     @ApiModelProperty(value = "资产编号")
     private String code;
 
+    @ApiModelProperty(value = "使用部门")
+    private String useDept;
+
     @ApiModelProperty(value = "资产分类")
     private Integer type;
 

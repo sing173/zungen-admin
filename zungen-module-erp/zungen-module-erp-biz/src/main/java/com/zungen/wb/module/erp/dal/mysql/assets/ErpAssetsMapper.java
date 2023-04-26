@@ -23,6 +23,7 @@ public interface ErpAssetsMapper extends BaseMapperX<ErpAssetsDO> {
                 .likeIfPresent(ErpAssetsDO::getCode, reqVO.getCode())
                 .eqIfPresent(ErpAssetsDO::getType, reqVO.getType())
                 .eqIfPresent(ErpAssetsDO::getStatus, reqVO.getStatus())
+                .eqIfPresent(ErpAssetsDO::getUseDept, reqVO.getUseDept())
                 .betweenIfPresent(ErpAssetsDO::getCheckInTime, reqVO.getCheckInTime())
                 .orderByDesc(ErpAssetsDO::getId));
     }
