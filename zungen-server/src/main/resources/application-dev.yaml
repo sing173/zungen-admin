@@ -44,13 +44,13 @@ spring:
       primary: master
       datasource:
         master:
-          name: zungen-pda-admin
+          name: zungen_pda_admin
           url: jdbc:mysql://192.168.1.172:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
           driver-class-name: com.mysql.jdbc.Driver
           username: root
           password: Zungen@123#@!
         slave: # 模拟从库，可根据自己需要修改 # 模拟从库，可根据自己需要修改
-          name: zungen-pda-admin
+          name: zungen_pda_admin
           url: jdbc:mysql://192.168.1.172:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
           driver-class-name: com.mysql.jdbc.Driver
           username: root
@@ -61,7 +61,7 @@ spring:
     host: 192.168.1.172 # 地址
     port: 6379 # 端口
     database: 1 # 数据库索引
-#    password: 123456 # 密码，建议生产环境开启
+    password: 123456 # 密码，建议生产环境开启
 
 jasypt:
   encryptor:
